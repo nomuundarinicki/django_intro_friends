@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Friend</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+        {% endif %}
+        <a href="{% url 'myfriend:index' %}">Home</a>
+        <a href="{% url 'myfriend:addFriend' %}">Add Friend</a>
+        <a href="{% url 'login:logout' %}">Logout</a>
+
+        <div>
+
+            <h1>{{user.username}}'s Friends</h1>
+
+              {% for friend in friends %}
+
+            <h4> add your friend top link "Add Friend"</h4>
+            <h1>{{friend.title}}</h1>
+                Created: {{friend.created_at}}
+            {{friend.content}}<br>
+            {% if Friend.user_id != user %}
+
+            {% endif %}
+        </div>
+
+        {% endfor %}
+
+  </body>
+</html>

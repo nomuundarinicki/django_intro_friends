@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Friends</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message|safe}}</p>
+            {% endfor %}
+        {% endif %}
+    <nav>
+        <div>
+            <a href="{% url 'myfriend:index' %}">Home</a>
+            <a href="{% url 'login:logout' %}">Logout</a>
+        </div>
+    </nav>
+    <div id='friend_info'>
+      <h1> {{friend.title}}</h1>
+    </div>
+    <main>
+      <h3>content:</h3>
+      {% for frined in friends %}
+      <div class='content'>
+        <div class='contentbody'>
+        <p><a href=''>{{friend.user.fname}}</a> says:{{friend.content}}</p>
+        <p>Posted on {{content.created_at}} {% if content.user.id == request.session.id %}
+          <a href= '{% url "myfriend:delete", content.id %}'> Delete </a> {% endif %}</p>
+        </div>
+      </div>
+        {% endfor %}
+      </main>
+    </body>
+</html>
